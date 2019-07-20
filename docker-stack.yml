@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:10
+    volumes:
+      - odoo_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+    ports:
+      - 5432:5432
+
+  odoo:
+    image: odoo:12
+    ports:
+      - 8069:8069
+    environment:
+      - HOST=postgres
+
+volumes:
+  odoo_data:
