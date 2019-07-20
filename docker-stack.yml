@@ -3,8 +3,6 @@ version: '3.7'
 services:
   postgres:
     image: postgres:10
-    volumes:
-      - odoo_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=odoo
@@ -18,6 +16,3 @@ services:
       - 8069:8069
     environment:
       - HOST=postgres
-
-volumes:
-  odoo_data:

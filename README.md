@@ -29,7 +29,7 @@ Path: [http://127.0.0.1:8069](http://127.0.0.1:8069).
 
 `make logs` shows logs
 
-## Using a conf file
+## Using odoo for persistent data
 
 ```
 version: '3.7'
@@ -49,7 +49,9 @@ services:
   odoo:
     image: odoo:12
     volumes:
-      - ./odoo.conf:/etc/odoo/odoo.conf
+      - odoo_web_data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
     ports:
       - 8069:8069
     environment:
@@ -57,8 +59,10 @@ services:
 
 volumes:
   odoo_data:
-
+  odoo_web_data:
 ```
+
+See the [config/odoo.conf](config/odoo.conf).
 
 The following users and passwords are part of the initial seed database:
 
