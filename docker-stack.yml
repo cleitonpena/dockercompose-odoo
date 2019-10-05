@@ -4,15 +4,27 @@ services:
   postgres:
     image: postgres:10
     environment:
+      - TZ=America/Guayaquil
       - POSTGRES_DB=postgres
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=odoo
+    volumes:
+      - odoo_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
 
   odoo:
     image: odoo:12
+    environment:
+      - TZ=America/Guayaquil
+      - HOST=postgres
+    volumes:
+      - odoo_filestore:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
     ports:
       - 8069:8069
-    environment:
-      - HOST=postgres
+
+volumes:
+  odoo_data:
+  odoo_filestore:
