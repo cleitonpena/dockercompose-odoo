@@ -28,6 +28,6 @@ stop-db:
 	@ docker rm -f odoo_postgres_dev
 
 clean-db:
-	@ docker rm -f odoo_postgres_dev
-	@ docker volume rm odoo_postgres_dev_data
-	@ docker network rm odoo_postgres_dev_network
+	@ docker rm -f odoo_postgres_dev || true
+	@ docker volume rm odoo_postgres_dev_data || true
+	@ docker network rm odoo_postgres_dev_network || true
