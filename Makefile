@@ -11,8 +11,8 @@ logs:
 	@ docker service logs -f odoo_odoo
 
 run-db:
-	@ docker volume create odoo_postgres_dev_data
-	@ docker network create --attachable odoo_postgres_dev_network
+	@ docker volume create odoo_postgres_dev_data | true
+	@ docker network create --attachable odoo_postgres_dev_network | true
 	@ docker run -d --rm \
 		-e TZ=America/Guayaquil \
 		-e POSTGRES_DB=postgres \
