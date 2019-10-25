@@ -9,7 +9,7 @@ Docker swarm odoo deploy.
 ## Docker Version
 
 - `docker-compose.yml`: 3.7
-- `docker`: 18.+
+- `docker`: 19.+
 
 ## Getting Started
 
@@ -54,7 +54,7 @@ services:
       - 5432:5432
 
   odoo:
-    image: odoo:12
+    image: odoo:13
     environment:
       - TZ=America/Guayaquil
       - HOST=postgres
@@ -96,7 +96,7 @@ services:
       - 5432:5432
 
   odoo:
-    image: odoo:12
+    image: odoo:13
     environment:
       - TZ=America/Guayaquil
       - HOST=postgres
