@@ -2,21 +2,21 @@ version: '3.7'
 
 services:
   postgres:
-    image: postgres:10
+    image: postgres:latest
     environment:
-      - TZ=America/Guayaquil
+      - TZ=America/Porto_Velho
       - POSTGRES_DB=postgres
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=odoo
     volumes:
       - odoo_data:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 5444:5432
 
   odoo:
-    image: odoo:${ODOO_VERSION}
+    image: odoo:latest
     environment:
-      - TZ=America/Guayaquil
+      - TZ=America/Porto_Velho
       - HOST=postgres
     volumes:
       - odoo_filestore:/var/lib/odoo

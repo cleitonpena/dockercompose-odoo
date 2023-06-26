@@ -1,6 +1,6 @@
 export
 
-ODOO_VERSION=13
+ODOO_VERSION=latest
 
 run:
 	@ docker stack deploy -c docker-stack.yml odoo
@@ -24,15 +24,15 @@ run-db:
 	@ docker volume create odoo_postgres_dev_data$(postfix) | true
 	@ docker network create --attachable odoo_postgres_dev_network$(postfix) | true
 	@ docker run -d --rm \
-		-e TZ=America/Guayaquil \
+		-e TZ=America/Porto_Velho \
 		-e POSTGRES_DB=postgres \
 		-e POSTGRES_PASSWORD=odoo \
 		-e POSTGRES_USER=odoo \
-		-p 5432:5432 \
+		-p 5444:5432 \
 		--network odoo_postgres_dev_network$(postfix) \
 		-v odoo_postgres_dev_data$(postfix):/var/lib/postgresql/data \
 		--name odoo_postgres_dev$(postfix) \
-		postgres:10
+		postgres:latest
 
 stop-db:
 	@ docker rm -f odoo_postgres_dev$(postfix)
